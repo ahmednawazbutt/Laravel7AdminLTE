@@ -23,15 +23,15 @@ Route::get('/home', function() {
 
 // routes with admin prefix
 Route::prefix('admin')->group(function () {
-    
+
     Auth::routes(); // auth route has "admin/" prefix monw in url
-    
-    // mcontrollers within App\Http\Controllers\Admin namespace  
+
+    // mcontrollers within App\Http\Controllers\Admin namespace
     Route::namespace('Admin')->group(function () {
 
         // routes with admin prefix and Auth Middleware implemeted
         Route::middleware(['auth'])->group(function() {
-            Route::get('users', 'AdminController@index')->name('index'); // route becomes admin.index
+            Route::get('users', 'UserController@index')->name('index'); // route becomes admin.index
         });
     });
 });
